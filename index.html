@@ -3,10 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="Logo.svg" />
     <title>My Portfolio</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="Card.css" />
     <link rel="stylesheet" href="nav.css" />
+    <link rel="stylesheet" href="form.css" />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
       crossorigin="anonymous"
@@ -49,14 +51,15 @@
         </div>
       </nav>
       <!-- Laptop -->
-       <div class="large-devices">
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#intro">Introduction</a></li>
-          <li><a href="#interests">My Interests</a></li>
-          <li><a href="#projects">Projects</a></li>
-        </ul>
-      </nav></div>
+      <div class="large-devices">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#interests">My Interests</a></li>
+            <li><a href="#projects">Projects</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
 
     <!-- Introduction -->
@@ -154,6 +157,78 @@
         <!-- Cards from js file... -->
       </div>
     </div>
+
+    <!-- Contact Form -->
+    <!-- Note that the contact form does not submit anywhere -->
+    <div class="contact">
+      <div class="contact-container">
+        <h2>Contact Me</h2>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="Enter your first name"
+              required
+            />
+            <small class="error-message"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Enter your last name"
+              required
+            />
+            <small class="error-message"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input
+              type="text"
+              id="phone"
+              name="phone"
+              placeholder="+2547XXXXXXXX"
+              required
+            />
+            <small class="error-message"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="example@gmail.com"
+              required
+            />
+            <small class="error-message"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="Enter your message..."
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="submit-button">Send Message</button>
+          <p id="successMessage" class="success-message"></p>
+        </form>
+      </div>
+    </div>
+
     <!-- footer -->
     <footer class="footer">
       <p>

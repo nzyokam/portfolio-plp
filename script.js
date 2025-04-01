@@ -1,57 +1,54 @@
 document.addEventListener("DOMContentLoaded", () => {
-  
-    gsap.to(".one", {
-        opacity: 1,
-        x: 0,
-        filter: "blur(0px)",
-        delay: 0.5,
-        ease: "ease.inOut"
-    });
+  gsap.to(".one", {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",
+    delay: 0.5,
+    ease: "ease.inOut",
+  });
 
-    gsap.to(".stager", {
-        opacity: 1,
-        x: 0,
-        filter: "blur(0px)",
-        stagger: 0.2,
-        ease: "ease.inOut",
-        delay: 1
-    });
-
+  gsap.to(".stager", {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",
+    stagger: 0.2,
+    ease: "ease.inOut",
+    delay: 1,
+  });
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    const showBtn = document.getElementById("show-resume-btn");
-    const closeBtn = document.getElementById("close-resume-btn");
-    const overlay = document.getElementById("cv-overlay");
+  const showBtn = document.getElementById("show-resume-btn");
+  const closeBtn = document.getElementById("close-resume-btn");
+  const overlay = document.getElementById("cv-overlay");
 
-    showBtn.addEventListener("click", () => {
-        overlay.classList.add("active");
-        showBtn.classList.add("hidden");
-    });
-
-    closeBtn.addEventListener("click", () => {
-        overlay.classList.remove("active");
-        showBtn.classList.remove("hidden");
-    });
-
-
-    overlay.addEventListener("click", (event) => {
-        if (event.target === overlay) {
-            overlay.classList.remove("active");
-            showBtn.classList.remove("hidden");
-        }
-    });
-});
-document.querySelectorAll(".book .cover").forEach((cover) => {
-    cover.addEventListener("click", function (event) {
-      event.stopPropagation(); // Prevents event bubbling issues
-  
-      // Toggle the 'flipped' class on click
-      this.classList.toggle("flipped");
-    });
+  showBtn.addEventListener("click", () => {
+    overlay.classList.add("active");
+    showBtn.classList.add("hidden");
   });
 
-  // Detect if the user is on a touch device
+  closeBtn.addEventListener("click", () => {
+    overlay.classList.remove("active");
+    showBtn.classList.remove("hidden");
+  });
+
+  overlay.addEventListener("click", (event) => {
+    if (event.target === overlay) {
+      overlay.classList.remove("active");
+      showBtn.classList.remove("hidden");
+    }
+  });
+});
+document.querySelectorAll(".book .cover").forEach((cover) => {
+  cover.addEventListener("click", function (event) {
+    event.stopPropagation(); // Prevents event bubbling issues
+
+    // Toggle the 'flipped' class on click
+    this.classList.toggle("flipped");
+  });
+});
+
+// Detect if the user is on a touch device
 const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
 document.querySelectorAll(".book").forEach((book) => {
@@ -71,43 +68,46 @@ document.querySelectorAll(".book").forEach((book) => {
 
 const projects = [
   {
-      id: "card1",
-      emoji: "🤔",
-      title: "PRODUCT LIST CART",
-      description: "A dynamic product listing featuring a functional shopping cart, allowing users to add, remove, and adjust item quantities. Built with React, Tailwind CSS, Framer Motion, and other libraries.",
-      github: "https://github.com/nzyokam/desserts",
-      live: "https://productlistcartfrontendmentor.netlify.app/"
+    id: "card1",
+    emoji: "🤔",
+    title: "PRODUCT LIST CART",
+    description:
+      "A dynamic product listing featuring a functional shopping cart, allowing users to add, remove, and adjust item quantities. Built with React, Tailwind CSS, Framer Motion, and other libraries.",
+    github: "https://github.com/nzyokam/desserts",
+    live: "https://productlistcartfrontendmentor.netlify.app/",
   },
   {
-      id: "card2",
-      emoji: "🤩",
-      title: "CONFERENCE TICKET GENERATOR",
-      description: "An interactive form that generates personalized conference tickets upon submission, featuring form validation and dynamic ticket rendering. Developed using React, Tailwind CSS, Framer Motion, and other libraries.",
-      github: "https://github.com/nzyokam/CodingConferenceTicketGenerator",
-      live: "https://codingconferencegenerator.netlify.app/"
+    id: "card2",
+    emoji: "🤩",
+    title: "CONFERENCE TICKET GENERATOR",
+    description:
+      "An interactive form that generates personalized conference tickets upon submission, featuring form validation and dynamic ticket rendering. Developed using React, Tailwind CSS, Framer Motion, and other libraries.",
+    github: "https://github.com/nzyokam/CodingConferenceTicketGenerator",
+    live: "https://codingconferencegenerator.netlify.app/",
   },
   {
-      id: "card3",
-      emoji: "🚀",
-      title: "SPACE TOURISM",
-      description: "A visually captivating website that takes users on a journey through space exploration. Features dedicated sections highlighting planets, space travel experiences, and futuristic missions.",
-      github: "https://github.com/nzyokam/spacetourism.git",
-      live: "https://touringspace.netlify.app/"
+    id: "card3",
+    emoji: "🚀",
+    title: "SPACE TOURISM",
+    description:
+      "A visually captivating website that takes users on a journey through space exploration. Features dedicated sections highlighting planets, space travel experiences, and futuristic missions.",
+    github: "https://github.com/nzyokam/spacetourism.git",
+    live: "https://touringspace.netlify.app/",
   },
   {
-      id: "card4",
-      emoji: "📩",
-      title: "CONTACT FORM",
-      description: "A responsive and accessible contact form with real-time validation and success messages, ensuring a seamless user experience. Crafted with React, Tailwind CSS, Framer Motion, and other libraries.",
-      github: "https://github.com/nzyokam/contactformnosubmit",
-      live: "https://contactformnosubmit.netlify.app/"
-  }
+    id: "card4",
+    emoji: "📩",
+    title: "CONTACT FORM",
+    description:
+      "A responsive and accessible contact form with real-time validation and success messages, ensuring a seamless user experience. Crafted with React, Tailwind CSS, Framer Motion, and other libraries.",
+    github: "https://github.com/nzyokam/contactformnosubmit",
+    live: "https://contactformnosubmit.netlify.app/",
+  },
 ];
 
 const container = document.getElementById("projects-container");
 
-
-projects.forEach(project => {
+projects.forEach((project) => {
   const card = document.createElement("div");
   card.classList.add("card");
   card.innerHTML = `
@@ -142,9 +142,9 @@ function showSideBar() {
   sidebar.classList.add("active");
 
   menuItems.forEach((item, index) => {
-      setTimeout(() => {
-          item.classList.add("stagger");
-      }, index * 200); // 200ms stagger delay per item
+    setTimeout(() => {
+      item.classList.add("stagger");
+    }, index * 200); // 200ms stagger delay per item
   });
 }
 
@@ -152,11 +152,71 @@ function hideSideBar() {
   const sidebar = document.getElementById("bar");
   const menuItems = document.querySelectorAll(".menu li");
 
-  menuItems.forEach(item => {
-      item.classList.remove("stagger");
+  menuItems.forEach((item) => {
+    item.classList.remove("stagger");
   });
 
   setTimeout(() => {
-      sidebar.classList.remove("active");
+    sidebar.classList.remove("active");
   }, 300);
 }
+document
+  .getElementById("contactForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    let valid = true;
+
+    const firstName = document.getElementById("firstName");
+    const lastName = document.getElementById("lastName");
+    const phone = document.getElementById("phone");
+    const email = document.getElementById("email");
+    const message = document.getElementById("message");
+    const successMessage = document.getElementById("successMessage");
+
+    const nameRegex = /^[a-zA-Z]{3,}$/;
+    const phoneRegex = /^\+2547\d{8}$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+    function validateField(field, regex, errorMessage) {
+      const errorElement = field.nextElementSibling;
+      if (!regex.test(field.value.trim())) {
+        errorElement.textContent = errorMessage;
+        errorElement.style.display = "block";
+        valid = false;
+      } else {
+        errorElement.style.display = "none";
+      }
+    }
+
+    validateField(
+      firstName,
+      nameRegex,
+      "First name must be at least 3 letters."
+    );
+    validateField(lastName, nameRegex, "Last name must be at least 3 letters.");
+    validateField(
+      phone,
+      phoneRegex,
+      "Phone number must be in format +2547XXXXXXXX."
+    );
+    validateField(email, emailRegex, "Email must be a Gmail address.");
+
+    if (message.value.trim() === "") {
+      message.nextElementSibling.textContent = "Message cannot be empty.";
+      message.nextElementSibling.style.display = "block";
+      valid = false;
+    } else {
+      message.nextElementSibling.style.display = "none";
+    }
+
+    if (valid) {
+      successMessage.textContent = "Message sent successfully!";
+      successMessage.style.display = "block";
+
+      setTimeout(() => {
+        successMessage.style.display = "none";
+        document.getElementById("contactForm").reset();
+      }, 3000);
+    }
+  });
