@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="Card.css" />
+    <link rel="stylesheet" href="nav.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- Nav -->
+    <div class="navbar-container">
+      <div class="logo-container">
+        <img src="Logo.svg" width="60" height="60" alt="Logo" />
+      </div>
+      <div class="hamburger small-devices">
+        <button onclick="showSideBar()" class="hamburger-button">
+          <svg
+            width="50"
+            height="50"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect x="3" y="6" width="25" height="2" fill="white" />
+            <rect x="3" y="15" width="25" height="2" fill="white" />
+          </svg>
+        </button>
+      </div>
+      <nav id="bar" class="sidebar">
+        <div class="logo-sidebar">
+          <img src="Logo.svg" width="60" height="60" alt="Logo" />
+        </div>
+        <button onclick="hideSideBar()" class="close-button" type="button">
+          ×
+        </button>
+        <div class="menu">
+          <ul>
+            <li onclick="hideSideBar()"><a href="#intro">Introduction</a></li>
+            <li onclick="hideSideBar()"><a href="#interests">Interests</a></li>
+            <li onclick="hideSideBar()"><a href="#projects">Projects</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- Laptop -->
+       <div class="large-devices">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#intro">Introduction</a></li>
+          <li><a href="#interests">My Interests</a></li>
+          <li><a href="#projects">Projects</a></li>
+        </ul>
+      </nav></div>
+    </div>
+
+    <!-- Introduction -->
+    <div id="intro" class="fixed">
+      <div class="content">
+        <h1 class="one">HELLO!</h1>
+        <p class="stager font-intro">
+          My name is
+          <span class="highlight">Muusi N. Nzyoka,</span>
+        </p>
+        <p class="stager font-intro">I am an intuitive developer</p>
+        <button id="show-resume-btn" class="cv margin stager">MY CV</button>
+        <div id="cv-overlay" class="cv-overlay">
+          <div class="cv-content">
+            <button id="close-resume-btn" class="cv">Close</button>
+            <iframe src="Resumé.pdf" class="cv-frame"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- My Interests -->
+    <div id="interests" class="my-interests">
+      <div class="center-interests stager">
+        <h1 class="margin">
+          <span class="big-title">My Interests</span>
+        </h1>
+        <div class="info-container">
+          <p class="hover-message">
+            <i>Hover over the cards</i>
+          </p>
+          <p class="click-message">
+            <i
+              >Click the card and click the cover again<br /><strong
+                >Think of it as closing and opening a bookbook<span
+                  style="font-size: 20px"
+                  >😉</span
+                ></strong
+              ></i
+            >
+          </p>
+        </div>
+      </div>
+
+      <div class="interests stager">
+        <!-- Interest 1 -->
+        <div class="book" style="--cover-image: url('1.webp')">
+          <p>
+            Anthropology, “the science of humanity,” which studies human beings
+            in aspects ranging from the biology and evolutionary history of Homo
+            sapiens to the features of society and culture that decisively
+            distinguish humans from other animal species. <br />
+            <a
+              href="https://www.britannica.com/science/anthropology"
+              target="_blank"
+              >Learn More</a
+            >
+          </p>
+
+          <div class="cover"></div>
+        </div>
+        <!-- Interest 2 -->
+        <div class="book" style="--cover-image: url('MUSIC.png')">
+          <p>
+            Listen to and watch Lemonade album by Beyoncé and you'll understand
+            my love for music.
+          </p>
+          <div class="cover"></div>
+        </div>
+        <!-- Interest 3 -->
+        <div class="book" style="--cover-image: url('TECH.png')">
+          <p>
+            Tech allows a single thought or idea to actually become a reality.
+          </p>
+          <div class="cover"></div>
+        </div>
+        <!-- Interest 4 -->
+        <div class="book" style="--cover-image: url('TRAVEL.png')">
+          <p>
+            O to sail in a ship, To leave this steady unendurable land, To leave
+            the tiresome sameness of the streets, the sidewalks and the houses,
+            To leave you, O you solid motionless land, and entering a ship, To
+            sail and sail and sail!
+            <br />
+            <strong>Walt Whitman (1819–1892)</strong>
+          </p>
+          <div class="cover"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- My Projects -->
+    <div id="projects" class="projects">
+      <h1 class="big-title">My Projects</h1>
+      <div class="card-container" id="projects-container">
+        <!-- Cards from js file... -->
+      </div>
+    </div>
+    <!-- footer -->
+    <footer class="footer">
+      <p>
+        &copy; 2025 <span id="name">Nzyoka M. Nguutu</span>. All Rights
+        Reserved.
+      </p>
+    </footer>
+  </body>
+</html>
