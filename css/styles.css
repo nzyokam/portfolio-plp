@@ -282,12 +282,14 @@ button:active:before {
   position: fixed;
   bottom: 0;
   width: 100vw;
+  z-index: 1000;
 }
 
 #name {
   transition: all 0.5s;
   color: #3a0ca3;
   cursor: pointer;
+  text-decoration: none;
 }
 
 #name:hover {
@@ -360,17 +362,14 @@ button:active:before {
     grid-template-columns: repeat(1, minmax(300px, 1fr));
   }
   .projects {
-    height: 100vh;
     z-index: 10;
-    margin-top: 100%;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .contact {
-    margin-top: 70%;
-  }
+  
   .textprojects {
     width: 100vw;
   }
@@ -392,9 +391,7 @@ button:active:before {
     flex-direction: column;
     justify-content: center;
   }
-  .my-interests {
-    height: 100vh;
-  }
+ 
   .interests {
     margin-top: 30px;
   }
