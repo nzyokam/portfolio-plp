@@ -123,10 +123,10 @@ projects.forEach((project) => {
               <div style="display: flex; flex-direction: row; width: 100%">
                   <div style="justify-content: space-around;">
                       <a href="${project.github}" class="git" target="_blank" title="Go to Github" style="margin-right: 20px;">
-                          <img class="git" src="git.svg"/>
+                          <img class="git" src="images/git.svg"/>
                       </a>
                       <a href="${project.live}" target="_blank" title="Go to Live Site">
-                          <img class="git" src="live.png"/>
+                          <img class="git" src="images/live.png"/>
                       </a>
                   </div>
               </div>
@@ -144,7 +144,7 @@ function showSideBar() {
   menuItems.forEach((item, index) => {
     setTimeout(() => {
       item.classList.add("stagger");
-    }, index * 200); // 200ms stagger delay per item
+    }, index * 200);
   });
 }
 
@@ -160,63 +160,110 @@ function hideSideBar() {
     sidebar.classList.remove("active");
   }, 300);
 }
-document
-  .getElementById("contactForm")
-  .addEventListener("submit", function (event) {
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contactForm");
+  const firstName = document.getElementById("firstName");
+  const lastName = document.getElementById("lastName");
+  const phone = document.getElementById("phone");
+  const email = document.getElementById("email");
+  const message = document.getElementById("message");
+  const successMessage = document.getElementById("successMessage");
+  const submitButton = document.getElementById("submitButton");
+  if (
+    !form ||
+    !firstName ||
+    !lastName ||
+    !phone ||
+    !email ||
+    !message ||
+    !successMessage ||
+    !submitButton
+  ) {
+    console.error(
+      "One or more form elements are missing. Check your HTML IDs."
+    );
+    return;
+  }
+  const nameRegex = /^[a-zA-Z]{3,}$/;
+  const phoneRegex = /^\+2547\d{8}$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+  function validateField(field, regex, errorMessage) {
+    const errorElement = field.nextElementSibling;
+    if (!regex.test(field.value.trim())) {
+      errorElement.textContent = errorMessage;
+      errorElement.style.display = "block";
+      return false;
+    } else {
+      errorElement.style.display = "none";
+      return true;
+    }
+  }
+
+  function checkFormCompletion() {
+    const allFilled =
+      firstName.value.trim() !== "" &&
+      lastName.value.trim() !== "" &&
+      phone.value.trim() !== "" &&
+      email.value.trim() !== "" &&
+      message.value.trim() !== "";
+
+    submitButton.disabled = !allFilled;
+    submitButton.disabled = !allFilled;
+    submitButton.style.backgroundColor = allFilled ? "#720e9e" : "gray";
+  }
+
+  form.addEventListener("input", checkFormCompletion); // Enable/disable submit button on input
+
+  form.addEventListener("submit", function (event) {
     event.preventDefault();
 
     let valid = true;
 
-    const firstName = document.getElementById("firstName");
-    const lastName = document.getElementById("lastName");
-    const phone = document.getElementById("phone");
-    const email = document.getElementById("email");
-    const message = document.getElementById("message");
-    const successMessage = document.getElementById("successMessage");
-
-    const nameRegex = /^[a-zA-Z]{3,}$/;
-    const phoneRegex = /^\+2547\d{8}$/;
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
-
-    function validateField(field, regex, errorMessage) {
-      const errorElement = field.nextElementSibling;
-      if (!regex.test(field.value.trim())) {
-        errorElement.textContent = errorMessage;
-        errorElement.style.display = "block";
-        valid = false;
-      } else {
-        errorElement.style.display = "none";
-      }
-    }
-
-    validateField(
+    valid &= validateField(
       firstName,
       nameRegex,
       "First name must be at least 3 letters."
     );
-    validateField(lastName, nameRegex, "Last name must be at least 3 letters.");
-    validateField(
+    valid &= validateField(
+      lastName,
+      nameRegex,
+      "Last name must be at least 3 letters."
+    );
+    valid &= validateField(
       phone,
       phoneRegex,
       "Phone number must be in format +2547XXXXXXXX."
     );
-    validateField(email, emailRegex, "Email must be a Gmail address.");
+    valid &= validateField(email, emailRegex, "Email must be a Gmail address.");
 
     if (message.value.trim() === "") {
-      message.nextElementSibling.textContent = "Message cannot be empty.";
-      message.nextElementSibling.style.display = "block";
+      const errorElement = message.nextElementSibling;
+      if (errorElement) {
+        errorElement.textContent = "Message cannot be empty.";
+        errorElement.style.display = "block";
+      }
       valid = false;
     } else {
-      message.nextElementSibling.style.display = "none";
+      const errorElement = message.nextElementSibling;
+      if (errorElement) {
+        errorElement.style.display = "none";
+      }
     }
 
     if (valid) {
-      successMessage.textContent = "Message sent successfully!";
-      successMessage.style.display = "block";
+      if (successMessage) {
+        successMessage.style.opacity = 1;
 
-      setTimeout(() => {
-        successMessage.style.display = "none";
-        document.getElementById("contactForm").reset();
-      }, 3000);
+        setTimeout(() => {
+          successMessage.style.opacity = 0;
+          form.reset();
+          checkFormCompletion();
+        }, 3000);
+      } else {
+        console.error("Success message element is missing.");
+      }
     }
   });
+});

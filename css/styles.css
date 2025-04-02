@@ -21,6 +21,7 @@ html {
   flex-direction: column;
   font-weight: 300;
   width: 100vw;
+  overflow: auto;
 }
 
 /* Navbar */
@@ -279,7 +280,7 @@ button:active:before {
   padding: 1em;
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 100vw;
 }
 
 #name {
@@ -331,9 +332,10 @@ button:active:before {
     flex-direction: column;
     margin-top: 30px;
     margin-left: 0;
-    
   }
-
+  .interests p {
+    font-size: 15px;
+  }
   .footer {
     background-color: black;
     color: white;
@@ -363,6 +365,9 @@ button:active:before {
     justify-content: center;
     align-items: center;
   }
+  .contact {
+    margin-top: 50%;
+  }
 }
 @media (min-width: 800px) {
   .fixed {
@@ -373,7 +378,6 @@ button:active:before {
   }
   .my-interests {
     height: 100vh;
-    
   }
   .projects {
     height: 100vh;
