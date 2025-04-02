@@ -85,7 +85,7 @@ html {
   --color: #560bad;
   font-family: inherit;
   display: inline-block;
-  width: 8em;
+  width: 9em;
   height: 2.6em;
   line-height: 2.5em;
   position: relative;
@@ -130,6 +130,7 @@ button:active:before {
   background: #3a0ca3;
   transition: background 0s;
 }
+
 #show-resume-btn {
   margin-top: 5%;
 }
@@ -194,7 +195,7 @@ button:active:before {
   grid-template-columns: repeat(2, minmax(400px, 1fr));
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+
   gap: 20px;
   max-width: 700px;
   margin-left: auto;
@@ -208,7 +209,7 @@ button:active:before {
 .hover-message,
 .click-message {
   display: none;
-  font-size: 10px;
+  font-size: 14px;
   margin-top: 20px;
 }
 
@@ -324,7 +325,9 @@ button:active:before {
   button {
     margin: 10px;
   }
-
+  .my-interests {
+    margin-top: 0;
+  }
   .interests {
     display: flex;
     justify-content: center;
@@ -366,8 +369,21 @@ button:active:before {
     align-items: center;
   }
   .contact {
-    margin-top: 50%;
+    margin-top: 70%;
   }
+  .textprojects {
+    width: 100vw;
+  }
+  .cv {
+    margin-top: 50px;
+    margin-left: 50px;
+  }
+}
+.text-projects {
+  margin-top: 20px;
+  margin-bottom: 50px;
+
+  text-align: center;
 }
 @media (min-width: 800px) {
   .fixed {
@@ -379,6 +395,9 @@ button:active:before {
   .my-interests {
     height: 100vh;
   }
+  .interests {
+    margin-top: 30px;
+  }
   .projects {
     height: 100vh;
     z-index: 10;
@@ -389,7 +408,9 @@ button:active:before {
     width: 100%;
     flex-direction: column;
   }
-
+  .cv {
+    margin: 100px;
+  }
   .big-title {
     font-size: 100px;
     display: flex;
@@ -416,6 +437,9 @@ button:active:before {
   }
   .small-devices {
     display: none;
+  }
+  .text-projects {
+    max-width: 500px;
   }
 }
 @media (hover: hover) {

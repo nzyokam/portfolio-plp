@@ -66,9 +66,7 @@ textarea {
 .submitButton:enabled {
   background-color: #720e9e;
 }
-.submit-button:hover {
-  background-color: #0c667a;
-}
+
 .submit-button:active {
   background-color: #1c0028;
 }

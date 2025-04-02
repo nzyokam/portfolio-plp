@@ -16,29 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     delay: 1,
   });
 });
-
-document.addEventListener("DOMContentLoaded", () => {
-  const showBtn = document.getElementById("show-resume-btn");
-  const closeBtn = document.getElementById("close-resume-btn");
-  const overlay = document.getElementById("cv-overlay");
-
-  showBtn.addEventListener("click", () => {
-    overlay.classList.add("active");
-    showBtn.classList.add("hidden");
-  });
-
-  closeBtn.addEventListener("click", () => {
-    overlay.classList.remove("active");
-    showBtn.classList.remove("hidden");
-  });
-
-  overlay.addEventListener("click", (event) => {
-    if (event.target === overlay) {
-      overlay.classList.remove("active");
-      showBtn.classList.remove("hidden");
-    }
-  });
-});
 document.querySelectorAll(".book .cover").forEach((cover) => {
   cover.addEventListener("click", function (event) {
     event.stopPropagation(); // Prevents event bubbling issues
@@ -266,4 +243,21 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const downloadButton = document.getElementById("downloadResume");
+
+  if (downloadButton) {
+    downloadButton.addEventListener("click", function () {
+      const link = document.createElement("a");
+      link.href = "/Resumé.pdf"; // Ensure this file exists in the correct path
+      link.download = "My_Resume.pdf";
+      document.body.appendChild(link); // Append to body for Firefox support
+      link.click();
+      document.body.removeChild(link); // Cleanup after clicking
+    });
+  } else {
+    console.error("Download button not found!");
+  }
 });
