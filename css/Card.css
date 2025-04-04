@@ -130,6 +130,8 @@
   .git {
     width: 20px;
     transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    margin-right: 10px;
   }
   
   .git:hover {

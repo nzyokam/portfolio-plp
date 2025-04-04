@@ -16,33 +16,32 @@ document.addEventListener("DOMContentLoaded", () => {
     delay: 1,
   });
 });
+
+// Toggle book cover flip
 document.querySelectorAll(".book .cover").forEach((cover) => {
   cover.addEventListener("click", function (event) {
-    event.stopPropagation(); // Prevents event bubbling issues
-
-    // Toggle the 'flipped' class on click
+    event.stopPropagation();
     this.classList.toggle("flipped");
   });
 });
 
-// Detect if the user is on a touch device
+// Detect touch device
 const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
 document.querySelectorAll(".book").forEach((book) => {
   let cover = book.querySelector(".cover");
 
   if (isTouchDevice) {
-    // Enable click toggle only for touch devices (mobile)
     book.addEventListener("click", function () {
-      if (cover.style.transform === "rotateY(-80deg)") {
-        cover.style.transform = "rotateY(0deg)";
-      } else {
-        cover.style.transform = "rotateY(-80deg)";
-      }
+      cover.style.transform =
+        cover.style.transform === "rotateY(-80deg)"
+          ? "rotateY(0deg)"
+          : "rotateY(-80deg)";
     });
   }
 });
 
+// Project data
 const projects = [
   {
     id: "card1",
@@ -82,36 +81,43 @@ const projects = [
   },
 ];
 
+// Render project cards
 const container = document.getElementById("projects-container");
 
 projects.forEach((project) => {
   const card = document.createElement("div");
   card.classList.add("card");
   card.innerHTML = `
-      <div class="heading">
-          <div>
-              <div>${project.emoji}</div>
-              <br />
-              <div>${project.title}</div>
-              <br />
-              <p>${project.description}</p>
-              <div style="margin-top: 10px"><strong>Check Out Live Site & Github Repo Below</strong></div>
-              <br />
-              <div style="display: flex; flex-direction: row; width: 100%">
-                  <div style="justify-content: space-around;">
-                      <a href="${project.github}" class="git" target="_blank" title="Go to Github" style="margin-right: 20px;">
-                          <img class="git" src="images/git.svg"/>
-                      </a>
-                      <a href="${project.live}" target="_blank" title="Go to Live Site">
-                          <img class="git" src="images/live.png"/>
-                      </a>
-                  </div>
-              </div>
+    <div class="heading">
+      <div>
+        <div>${project.emoji}</div>
+        <br />
+        <div>${project.title}</div>
+        <br />
+        <p>${project.description}</p>
+        
+        <br />
+        <div style="display: flex; flex-direction: row; width: 100%">
+          <div style="display:flex; text-align:center; align-items:center; margin-right: 50px; flex-direction:row;">
+            <a href="${project.github}" class="git" target="_blank" title="Go to GitHub">
+              <img src="images/git.svg" alt="GitHub logo" />
+            </a>
+            <p style="color: white; font-size: 12px;">GitHub</p>
           </div>
+          <div style="display:flex; text-align:center; align-items:center; margin-right: 50px; flex-direction:row;">
+            <a href="${project.live}" target="_blank" title="Go to Live Site" class="git">
+              <img src="images/goto.png" alt="Live site icon" style="width:30px;"/>
+            </a>
+            <p style="color: white; font-size: 12px;">Check Live Site</p>
+          </div>
+        </div>
       </div>
+    </div>
   `;
   container.appendChild(card);
 });
+
+// Sidebar toggle functions
 function showSideBar() {
   const sidebar = document.getElementById("bar");
   const menuItems = document.querySelectorAll(".menu li");
@@ -138,6 +144,7 @@ function hideSideBar() {
   }, 300);
 }
 
+// Contact form validation
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("contactForm");
   const firstName = document.getElementById("firstName");
@@ -147,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const message = document.getElementById("message");
   const successMessage = document.getElementById("successMessage");
   const submitButton = document.getElementById("submitButton");
+
   if (
     !form ||
     !firstName ||
@@ -162,6 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
     return;
   }
+
   const nameRegex = /^[a-zA-Z]{3,}$/;
   const phoneRegex = /^\+2547\d{8}$/;
   const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
@@ -187,11 +196,10 @@ document.addEventListener("DOMContentLoaded", function () {
       message.value.trim() !== "";
 
     submitButton.disabled = !allFilled;
-    submitButton.disabled = !allFilled;
     submitButton.style.backgroundColor = allFilled ? "#720e9e" : "gray";
   }
 
-  form.addEventListener("input", checkFormCompletion); // Enable/disable submit button on input
+  form.addEventListener("input", checkFormCompletion);
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -230,32 +238,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (valid) {
-      if (successMessage) {
-        successMessage.style.opacity = 1;
-
-        setTimeout(() => {
-          successMessage.style.opacity = 0;
-          form.reset();
-          checkFormCompletion();
-        }, 3000);
-      } else {
-        console.error("Success message element is missing.");
-      }
+      successMessage.style.opacity = 1;
+      setTimeout(() => {
+        successMessage.style.opacity = 0;
+        form.reset();
+        checkFormCompletion();
+      }, 3000);
     }
   });
 });
 
+// Resume download functionality
 document.addEventListener("DOMContentLoaded", function () {
   const downloadButton = document.getElementById("downloadResume");
 
   if (downloadButton) {
     downloadButton.addEventListener("click", function () {
       const link = document.createElement("a");
-      link.href = "/Resumé.pdf"; // Ensure this file exists in the correct path
-      link.download = "My_Resume.pdf";
-      document.body.appendChild(link); // Append to body for Firefox support
+      link.href = "/NzyokaResumé.pdf";
+      link.download = "NzyokaResumé.pdf";
+      document.body.appendChild(link);
       link.click();
-      document.body.removeChild(link); // Cleanup after clicking
+      document.body.removeChild(link);
     });
   } else {
     console.error("Download button not found!");
